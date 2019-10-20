@@ -253,3 +253,126 @@ int deleteLinkedList(LL_HEAD* head_ptr)
     return SUCCESS;
 
 }
+
+
+/*
+reverseOrderRecursion & printLinkedListInReverse - These two functions are used to print linkedlist in reverse order
+*/
+void reverseOrderRecursion(LL_NODE* node_ptr)
+{
+    if(node_ptr == NULL) return;
+
+    reverseOrderRecursion(node_ptr->nextNode);
+    printf("%d  ", node_ptr->value);
+
+    return;
+
+}
+int printLinkedListInReverse(LL_HEAD* head_ptr)
+{
+
+    reverseOrderRecursion(head_ptr->nextNode);
+    return SUCCESS;
+}
+
+
+/*
+linkedListAsArray - Converts an linked list to array
+*/
+int linkedListAsArray(LL_HEAD* head_ptr, DATA_TYPE ary[])
+{
+    LL_NODE* next;
+    int i;
+
+    next = head_ptr->nextNode;
+    i = 0;
+    while(next != NULL)
+    {
+
+        ary[i] = next->value;
+        next = next->nextNode;
+        i++;
+
+    }
+
+    return i;
+}
+
+
+/*
+getElementAtIndex - This function returns an element at an index through returnValue variable
+*/
+int getElementAtIndex(LL_HEAD* head_ptr, int index, DATA_TYPE* returnValue)
+{
+
+    LL_NODE* next;
+    next = head_ptr->nextNode;
+    int i = 0;
+
+    if(index < 0) return FAILURE;
+    if(index >= getNumElementsInLinkedList(head_ptr)) return FAILURE;
+
+    while(next != NULL)
+    {
+        if(i == index)
+        {
+            *returnValue = next->value;
+            return SUCCESS;
+        }
+
+        next = next->nextNode;
+        i++;
+
+    }
+
+    return FAILURE;
+}
+
+
+/*
+isInLinkedList - Used to check if an element is present in the linked list
+*/
+int isInLinkedList(LL_HEAD* head_ptr, DATA_TYPE searchValue)
+{
+    LL_NODE* next;
+    next = head_ptr->nextNode;
+
+    while(next != NULL)
+    {
+        if(next->value == searchValue)
+        {
+            return SUCCESS;
+        }
+
+        next = next->nextNode;
+
+    }
+
+    return FAILURE;
+
+}
+
+/*
+getElementIndex - returns the location of an element; -1 if element is not present
+*/
+int getElementIndex(LL_HEAD* head_ptr, DATA_TYPE searchValue)
+{
+    LL_NODE* next;
+    next = head_ptr->nextNode;
+    int i = 0;
+
+    while(next != NULL)
+    {
+        if(next->value == searchValue)
+        {
+            return i;
+        }
+
+        next = next->nextNode;
+        i++;
+
+    }
+
+    return -1;
+
+}
