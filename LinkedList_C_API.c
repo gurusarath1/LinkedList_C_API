@@ -23,6 +23,28 @@ _____________________          _____________________          __________________
 */
 
 
+
+/*
+checkEquality - This function checks if two variables of type DATA_TYPE are equal
+
+Note:
+THIS FUNCTION HAS TO BE MODIFIED ACCORDING TO THE DATA TYPE OF DATA_TYPE !!!
+*/
+int checkEquality(DATA_TYPE* var1_ptr, DATA_TYPE* var2_ptr)
+{
+
+    if(*var1_ptr == *var2_ptr)
+    {
+        return YES;
+    } else {
+
+        return NO;
+    }
+
+}
+
+// DO NOT CHANGE THE CODE BELOW --------------------------------------------------------------------------
+
 /*
 createLinkedList - This function creates the head node of linked list
 */
@@ -150,7 +172,7 @@ int removeElementWithVal(LL_HEAD* head_ptr, DATA_TYPE val)
         current = next;
         next = current->nextNode;
 
-        if(current->value == val)
+        if( checkEquality(&(current->value), &val)  )
         {
             free(current);
 
@@ -339,7 +361,7 @@ int isInLinkedList(LL_HEAD* head_ptr, DATA_TYPE searchValue)
 
     while(next != NULL)
     {
-        if(next->value == searchValue)
+        if( checkEquality(&(next->value), &searchValue) )
         {
             return SUCCESS;
         }
@@ -363,7 +385,7 @@ int getElementIndex(LL_HEAD* head_ptr, DATA_TYPE searchValue)
 
     while(next != NULL)
     {
-        if(next->value == searchValue)
+        if( checkEquality(&(next->value), &searchValue) )
         {
             return i;
         }

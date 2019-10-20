@@ -6,6 +6,11 @@ enum STATUS {
     SUCCESS = 1
 };
 
+enum YES_NO {
+    NO = 0,
+    YES = 1
+};
+
 struct LinkedListNode {
 
     DATA_TYPE value;
@@ -20,6 +25,9 @@ typedef struct LinkedListHead {
 
 } LL_HEAD;
 
+
+//checkEquality function has to be modified according to DATA_TYPE
+int checkEquality(DATA_TYPE* var1_ptr, DATA_TYPE* var2_ptr);
 
 //Functions for creating
 int createLinkedList(LL_HEAD** head_ptr_ptr);
